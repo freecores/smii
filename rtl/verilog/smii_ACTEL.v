@@ -144,7 +144,11 @@ module smii_txrx
 	 mtx_clk_tmp <= 1'b1;
        else if (state[2] | state[7])
 	 mtx_clk_tmp <= 1'b0;
-   assign #1 mtx_clk = mtx_clk_tmp;
+   gbuf bufg1
+     (
+      .CLK(mtx_clk_tmp),
+      .GL(mtx_clk)
+      );
    always @ (posedge clk or posedge rst)
      if (rst)
        begin
@@ -237,6 +241,10 @@ module smii_txrx
 	 mrx_clk_tmp <= 1'b1;
        else if (state[3] | state[8])
 	 mrx_clk_tmp <= 1'b0;
-   assign #1 mrx_clk = mrx_clk_tmp;
+   gbuf bufg2
+     (
+      .CLK(mrx_clk_tmp),
+      .GL(mrx_clk)
+      );
    assign mcoll = mcrs & mtxen;
 endmodule 

@@ -19,6 +19,7 @@ comp8:
 	vppp --simple +define+SMII+8 tmp.v > smii_module_inst_8.v
 
 smii:
-	vppp --simple +define+ACTEL generic_buffers.v smii_sync.v smii_txrx.v | cat copyright.v - > smii.v
+	vppp --simple +define+ACTEL generic_buffers.v smii_sync.v smii_txrx.v | cat copyright.v - > smii_ACTEL.v
+	vppp --simple generic_buffers.v smii_sync.v smii_txrx.v | cat copyright.v - > smii.v
 
 all: comp1 comp2 comp3 comp4 comp8 smii
