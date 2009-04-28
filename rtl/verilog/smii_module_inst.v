@@ -65,10 +65,10 @@ smii_sync smii_sync1
    );
 
 `ifndef SMII_SYNC_PER_PHY
-obufdff obufdff_sync::`i
+obufdff obufdff_sync
   (
    .d(sync),
-   .pad(sync_pad_o[`i]),
+   .pad(eth_sync_pad_o),
    .clk(eth_clk),
    .rst(wb_rst)
    );

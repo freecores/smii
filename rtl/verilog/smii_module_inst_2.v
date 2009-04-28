@@ -29,13 +29,6 @@ smii_sync smii_sync1
    .clk(eth_clk),
    .rst(wb_rst)
    );
-obufdff obufdff_sync3
-  (
-   .d(sync),
-   .pad(sync_pad_o[3]),
-   .clk(eth_clk),
-   .rst(wb_rst)
-   );
 eth_top eth_top1
 	(
 	 .wb_clk_i(wb_clk),
@@ -103,6 +96,13 @@ smii_txrx smii_txrx1
    .mcoll(m1coll),
    .mcrs(m1crs),
    .state(state),
+   .clk(eth_clk),
+   .rst(wb_rst)
+   );
+obufdff obufdff_sync1
+  (
+   .d(sync),
+   .pad(eth_sync_pad_o[1]),
    .clk(eth_clk),
    .rst(wb_rst)
    );
@@ -187,6 +187,13 @@ smii_txrx smii_txrx2
    .mcoll(m2coll),
    .mcrs(m2crs),
    .state(state),
+   .clk(eth_clk),
+   .rst(wb_rst)
+   );
+obufdff obufdff_sync2
+  (
+   .d(sync),
+   .pad(eth_sync_pad_o[2]),
    .clk(eth_clk),
    .rst(wb_rst)
    );
